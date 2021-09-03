@@ -1,6 +1,7 @@
 @import "styles/variables.scss";
 
 .interviewers {
+  transition: 0.2s;
   &__header {
     color: $white;
     margin-bottom: 0.5rem;

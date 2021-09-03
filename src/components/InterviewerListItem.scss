@@ -4,7 +4,7 @@
 .interviewers {
   &__item {
     @include button-inactive--opacity;
-
+    transition: 0.5s;
     margin-right: 0.5rem;
 
     &-image {
