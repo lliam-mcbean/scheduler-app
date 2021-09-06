@@ -1,4 +1,15 @@
-const getAppointmentsForDay = (state, day) => {
+import { unstable_renderSubtreeIntoContainer } from "react-dom"
+
+const getInterview = function(state, interview){  
+    if(interview) {
+        const returnObject = {...interview}
+        returnObject.interviewer = state.interviewers[`${interview.interviewer}`]
+        return returnObject
+    }
+    return null
+}
+
+const getAppointmentsForDay = function(state, day) {
     const returnData = []
     for(const thisDay of state.days) {
         if (thisDay.name === day) {
@@ -10,4 +21,16 @@ const getAppointmentsForDay = (state, day) => {
     return returnData;
 }
 
-module.exports = { getAppointmentsForDay }
+const getInterviewersForDay = function(state) {
+    const returnData = []
+    for (const interviewer in state.interviewers) {
+        returnData.push(state.interviewers[interviewer])
+    }
+    return returnData
+}
+
+export { 
+    getAppointmentsForDay, 
+    getInterview,
+    getInterviewersForDay
+ }
