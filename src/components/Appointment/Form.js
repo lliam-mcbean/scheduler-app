@@ -9,8 +9,9 @@ import InterviewerList from 'components/InterviewerList';
 import Button from 'components/Button';
 
 export default function Form(props) {
-    const [interviewer, setInterviewer] = useState(props.interviewer || null);
-    const [name, setName] = useState(props.name || "");
+    console.log("THESE ARE FORM PROPS: ", props)
+    const [interviewer, setInterviewer] = useState(props.interview !== null ? props.interview.interviewer.id : null);
+    const [name, setName] = useState(props.interview !== null ? props.interview.student : "");
 
     const reset = () => {
         setName("")
@@ -47,7 +48,7 @@ export default function Form(props) {
                         props.transition("SHOW")
                     })
                     .catch(() => {
-                        props.transition("ERROR_SAVE")
+                        props.transition("ERROR_SAVE", true)
                     })
                     }}>Save</Button>
                 </section>

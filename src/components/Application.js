@@ -82,11 +82,12 @@ export default function Application() {
       ...state.appointments,
       [id]: appointment
     };
-    setState({
-      ...state,
-      appointments
-    });
-    return axios.put(`/api/appointments/${id}`, {interview})
+    return axios.put(`/api/appointments/${id}`, {interview}).then(() => {
+      setState({
+        ...state,
+        appointments
+      });
+    })
   }
 
   const deleteInterview = (id) => {

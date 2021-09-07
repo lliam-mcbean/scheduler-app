@@ -36,7 +36,7 @@ export default function Appointment({time, interview, interviewers, id, bookInte
         transition(SAVING)
         return bookInterview(id, interview)
     }
-    // TALK TO MENTOR ABOUT SAVING AND DELETING LOADERS
+    
     const deleting = () => {
         transition(DELETING)
         return deleteInterview(id)
@@ -64,8 +64,7 @@ export default function Appointment({time, interview, interviewers, id, bookInte
                 onCancel={() => back()}
                 onSave={save}
                 transition={transition}
-                name={interview.student}
-                interviewer={interview.interviewer.id}
+                interview={interview}
             />
             )}
             {mode === SAVING && <Status message="Saving"/>}
