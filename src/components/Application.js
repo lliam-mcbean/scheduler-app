@@ -47,46 +47,85 @@ export default function Application() {
   let dailyInterviewers = []
 
   const [state, setState] = useState({
-    day: "Monday",
+    day: "Tuesday",
     days: [],
     appointments: {},
-    interviewers: {}
+    interviewers: []
   });
 
   const setDay = day => setState({ ...state, day });
   const setDays = days => setState(prev => ({ ...prev, days }));
-  const setAppointments = appointments => setState(prev => ({...prev, appointments}))
-  const setInterviewers = interviewers => setState(prev => ({...prev, interviewers}))
+  const setAppointments = appointments => setState(prev => ({...prev, appointments}));
+  const setInterviewers = interviewers => setState(prev => ({...prev, interviewers}));
 
   useEffect(() => {
     Promise.all([
       axios.get('/api/days'),
-      axios.get('api/appointments'),
+      axios.get('/api/appointments'),
       axios.get('/api/interviewers')
     ]).then((results) => {
       setInterviewers(results[2].data)
       setAppointments(results[1].data)
       setDays(results[0].data)
-
     });
   }, [])
 
-  dailyAppointments = getAppointmentsForDay(state, state.day)
-  dailyInterviewers = getInterviewersForDay(state)
+  console.log("these are the DAYS: ", state.days)
 
+  const bookInterview = (id, interview) => {
+    // console.log(id, interview);
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    setState({
+      ...state,
+      appointments
+    });
+    return axios.put(`/api/appointments/${id}`, {interview})
+  }
+
+  const deleteInterview = (id) => {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    setState({
+      ...state,
+      appointments
+    });
+    return axios.delete(`/api/appointments/${id}`)
+  }
+
+  dailyAppointments = getAppointmentsForDay(state, state.day)
+  dailyInterviewers = getInterviewersForDay(state, state.day)
+  console.log("this is the DAILYINTERVIEWERS: ", dailyInterviewers)
 
   const mappedAppointments = dailyAppointments.map(appointment => {
 
-    appointment.interview = getInterview(state, appointment.interview)
-    console.log(appointment.interview)
+    const interview = getInterview(state, appointment.interview)
+    // console.log(appointment.interview)
+    // console.log("this is the INTERVIEW ", interview)
     return <Appointment 
       key={`appointment-${appointment.id}`}
       id={appointment.id}
       time={appointment.time}
-      interview={appointment.interview}
+      interview={interview}
       interviewers={dailyInterviewers}
+      bookInterview={bookInterview}
+      deleteInterview={deleteInterview}
     />
   })
+
+  console.log(state.appointments)
 
   return (
     <main className="layout">

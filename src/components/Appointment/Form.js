@@ -40,7 +40,16 @@ export default function Form(props) {
             <section className="appointment__card-right">
                 <section className="appointment__actions">
                 <Button danger onClick={cancel}>Cancel</Button>
-                <Button confirm onClick={props.onSave}>Save</Button>
+                <Button confirm onClick={(event) => {
+                    // console.log("this is props.interviewers: ", props.interviewers)
+                    props.onSave(name, interviewer)
+                    .then(() => {
+                        props.transition("SHOW")
+                    })
+                    .catch(() => {
+                        props.transition("ERROR_SAVE")
+                    })
+                    }}>Save</Button>
                 </section>
             </section>
         </main>

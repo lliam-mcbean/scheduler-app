@@ -1,5 +1,3 @@
-import { unstable_renderSubtreeIntoContainer } from "react-dom"
-
 const getInterview = function(state, interview){  
     if(interview) {
         const returnObject = {...interview}
@@ -21,16 +19,20 @@ const getAppointmentsForDay = function(state, day) {
     return returnData;
 }
 
-const getInterviewersForDay = function(state) {
+const getInterviewersForDay = function(state, day) {
     const returnData = []
-    for (const interviewer in state.interviewers) {
-        returnData.push(state.interviewers[interviewer])
+    for(const thisDay of state.days) {
+        if (thisDay.name === day) {
+            for(const interviewer of thisDay.interviewers) {
+                returnData.push(state.interviewers[`${interviewer}`])
+            }
+        }
     }
-    return returnData
+    return returnData;
 }
 
 export { 
     getAppointmentsForDay, 
     getInterview,
     getInterviewersForDay
- }
+}
