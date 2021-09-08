@@ -9,7 +9,7 @@ import InterviewerList from 'components/InterviewerList';
 import Button from 'components/Button';
 
 export default function Form(props) {
-    console.log("THESE ARE FORM PROPS: ", props)
+    //console.log("THESE ARE FORM PROPS: ", props)
     const [interviewer, setInterviewer] = useState(props.interview !== null ? props.interview.interviewer.id : null);
     const [name, setName] = useState(props.interview !== null ? props.interview.student : "");
 

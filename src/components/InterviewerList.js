@@ -5,6 +5,7 @@
 import React from 'react';
 import 'components/InterviewerList.scss'
 import InterviewerListItem from './InterviewerListItem';
+import PropTypes from 'prop-types';
 
 export default function InterviewerList(props) {
     console.log("These are my props: ", props)
@@ -28,4 +29,10 @@ export default function InterviewerList(props) {
             </ul>
         </section>
     )
+}
+
+InterviewerList.propTypes = {
+    interviewer: PropTypes.number.isRequired,
+    interviewers: PropTypes.array.isRequired,
+    setInterviewer: PropTypes.func.isRequired
 }

@@ -22,7 +22,6 @@ export default function useVisualMode(initial) {
             let tempHistory = [...history]
             tempHistory.pop()
             setHistory(tempHistory)
-            // CONSULT MENTOR ABOUT THIS. ITS NOT GOOD PRACTICE
             return setMode(history[history.length - 2])
         }
         return
