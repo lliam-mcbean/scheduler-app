@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "components/Application.scss";
 import Appointment from "components/Appointment";
 import DayList from "./DayList";
-import axios from "axios";
 import useApplicationData from "hooks/useApplicationData";
 
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
@@ -54,19 +53,13 @@ export default function Application() {
     deleteInterview
   } = useApplicationData();
 
-
-  console.log("THIS IS THE STATE FROM APP: ", state)
-  //console.log("these are the DAYS: ", state.days)
-
   dailyAppointments = getAppointmentsForDay(state, state.day)
   dailyInterviewers = getInterviewersForDay(state, state.day)
-  //console.log("this is the DAILYINTERVIEWERS: ", dailyInterviewers)
 
   const mappedAppointments = dailyAppointments.map(appointment => {
 
     const interview = getInterview(state, appointment.interview)
-    console.log(appointment.interview)
-    console.log("this is the INTERVIEW ", interview)
+
     return <Appointment 
       key={`appointment-${appointment.id}`}
       id={appointment.id}
@@ -77,8 +70,6 @@ export default function Application() {
       deleteInterview={deleteInterview}
     />
   })
-
-  //console.log(state.appointments)
 
   return (
     <main className="layout">

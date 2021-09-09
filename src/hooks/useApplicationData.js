@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function useApplicationData() {
@@ -27,7 +27,6 @@ export default function useApplicationData() {
     }, [])
     
     const bookInterview = (id, interview) => {
-        // console.log(id, interview);
         return axios.put(`/api/appointments/${id}`, {interview}).then(() => {
             const appointment = {
                 ...state.appointments[id],
@@ -77,7 +76,6 @@ export default function useApplicationData() {
     const getSpots = (data) => {
             let newDay = {}
             let counter = 0
-            // console.log(data.days)
             
             for (let day of data.days) {
 
@@ -93,32 +91,15 @@ export default function useApplicationData() {
                     }
                 }
             }
-            // console.log("whats up")
         
             const newDays = [
                 ...state.days
             ]
 
-            const newerDay = {
-                ...newDays[newDay.id -1]
-            }
-            newerDay.spots = counter
-
-            newDays[newDay.id - 1] = newerDay
-
-            // console.log(...newDays)
+            newDay.spots = counter
+            newDays[newDay.id - 1] = newDay
 
             return newDays
-
-            // const newState = {
-            //     ...state,
-            //     days: newDays
-            // }
-
-            // setState(prev => (newState));
-            // console.log("NEW STATE:",newState)
-            // console.log(counter)
-            // console.log("OLD STATE :", state)
     }
 
     return {

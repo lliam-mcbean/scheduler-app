@@ -53,7 +53,6 @@ export default function Form(props) {
                 <section className="appointment__actions">
                 <Button danger onClick={cancel}>Cancel</Button>
                 <Button confirm onClick={(event) => {
-                    // console.log("this is props.interviewers: ", props.interviewers)
                     validate()
                     .then(() => {
                         if (name !== "") {
