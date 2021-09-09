@@ -8,7 +8,6 @@ import InterviewerListItem from './InterviewerListItem';
 import PropTypes from 'prop-types';
 
 export default function InterviewerList(props) {
-    console.log("These are my props: ", props)
 
     const mappedInterviewers = props.interviewers.map((interviewer) => {
 

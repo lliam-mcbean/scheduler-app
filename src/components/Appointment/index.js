@@ -33,8 +33,11 @@ export default function Appointment({time, interview, interviewers, id, bookInte
           student: name,
           interviewer
         };
-        transition(SAVING)
-        return bookInterview(id, interview)
+        if (name !== '') {
+            transition(SAVING)
+            return bookInterview(id, interview)
+        }
+        return Promise.resolve({})
     }
     
     const deleting = () => {
@@ -64,7 +67,8 @@ export default function Appointment({time, interview, interviewers, id, bookInte
                 onCancel={() => back()}
                 onSave={save}
                 transition={transition}
-                interview={interview}
+                name={interview && interview.student} 
+                interviewer={interview && interview.interviewer.id}  
             />
             )}
             {mode === SAVING && <Status message="Saving"/>}
