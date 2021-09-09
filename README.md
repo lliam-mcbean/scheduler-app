@@ -32,8 +32,8 @@ This project came with lots of problems, lots of bugs to fix sometimes stemming 
 
 ## Final Product
 
-!["screenshot of URLs page"](https://github.com/soupIsTheCurrencyOfTheFuture/tinyapp/blob/main/docs/Screen%20Shot%202021-08-05%20at%204.47.42%20PM.png)
+!["screenshot of Application Page"](https://github.com/soupIsTheCurrencyOfTheFuture/scheduler-app/blob/master/public/images/Screen%20Shot%202021-09-08%20at%209.29.16%20PM.png)
 
-!["screenshot of homepage"](https://github.com/soupIsTheCurrencyOfTheFuture/tinyapp/blob/main/docs/Screen%20Shot%202021-08-05%20at%204.45.43%20PM.png)
+!["screenshot of Form Input"](https://github.com/soupIsTheCurrencyOfTheFuture/scheduler-app/blob/master/public/images/Screen%20Shot%202021-09-08%20at%209.29.30%20PM.png)
 
-!["screenshot of 404 page"](https://github.com/soupIsTheCurrencyOfTheFuture/tinyapp/blob/main/docs/Screen%20Shot%202021-08-05%20at%204.46.41%20PM.png)
+!["screenshot of Cypress Testing"](https://github.com/soupIsTheCurrencyOfTheFuture/scheduler-app/blob/master/public/images/Screen%20Shot%202021-09-08%20at%209.31.23%20PM.png)
