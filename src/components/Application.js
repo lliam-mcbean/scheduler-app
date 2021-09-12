@@ -6,41 +6,6 @@ import useApplicationData from "hooks/useApplicationData";
 
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 
-// const appointments = [
-//   {
-//     id: 1,
-//     time: "12pm",
-//   },
-//   {
-//     id: 2,
-//     time: "1pm",
-//     interview: {
-//       student: "Lydia Miller-Jones",
-//       interviewer: {
-//         id: 1,
-//         name: "Sylvia Palmer",
-//         avatar: "https://i.imgur.com/LpaY82x.png",
-//       }
-//     }
-//   },
-//   {
-//     id: 3,
-//     time: "4pm",
-//     interview: {
-//       student: "Ellie Chungus",
-//       interviewer: {
-//         id: 1,
-//         name: "Slyvan Ivan",
-//         avatar: "https://i.imgur.com/twYrpay.jpg",
-//       }
-//     }
-//   },
-//   {
-//     id: 4,
-//     time: "5pm",
-//   }
-// ];
-
 export default function Application() {
 
   let dailyAppointments = []
