@@ -28,7 +28,7 @@ export default function Form(props) {
           setError("Student name cannot be blank");
           return Promise.resolve({});
         }
-        if (interviewer === null) {
+        if (!interviewer) {
             setError("An interviewer must be selected");
             return Promise.resolve({})
         }
@@ -59,7 +59,7 @@ export default function Form(props) {
                 <Button confirm onClick={(event) => {
                     validate()
                     .then(() => {
-                        if (name !== "") {
+                        if (name !== "" && interviewer !== null) {
                             props.transition("SHOW")
                         } else {
                             props.transition("CREATE")
