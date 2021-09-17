@@ -62,7 +62,7 @@ export default function Form(props) {
                   }
                 })
                 .catch(() => {
-                  props.transition('ERROR_SAVE', true);
+                  props.transition('ERROR_SAVE');
                 });
             }}
           >
